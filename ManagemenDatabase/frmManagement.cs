@@ -231,6 +231,15 @@ namespace ManagemenDatabase
             }
 
         }
-    
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            using (DataFromFile dataForm = new DataFromFile())
+            {
+                dataForm.ShowDialog();
+                this.Show();
+            }
+        }
     }
 }
