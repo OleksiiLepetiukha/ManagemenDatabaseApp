@@ -11,12 +11,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ValidateControls;
+using HelperMethods;
 
 namespace ManagemenDatabase
 {
     public partial class frmSearch : Form
     {
         string connectionString = SQLQueries.CONNSTRING;
+        String searchCriteria = "";
+        String[] dataFromFile = null;
+        String derictory = @"D:\Front\SoftwearDevelopment\3. Programing C#/";
 
         public frmSearch()
         {
@@ -27,11 +31,23 @@ namespace ManagemenDatabase
         {
             DataBinding dataBindingObj = new DataBinding();
             dataBindingObj.LoadData(connectionString, SQLQueries.SELECTALL, dgvSearch);
+                        
+            String fileName = @"managment.txt";
+            String records = derictory + fileName;
+            dataFromFile = Helper.readFileFromArr(records);
+
+            dgvDataSearch.ColumnCount = 4;
+            dgvDataSearch.Columns[0].Name = "Id";
+            dgvDataSearch.Columns[1].Name = "Forename";
+            dgvDataSearch.Columns[2].Name = "Surname";
+            dgvDataSearch.Columns[3].Name = "Dept. Number";
+
+            Helper.insertDataToDGV(dataFromFile, dgvDataSearch);
         }
 
         private void buildQuery()
         {
-            String searchCriteria = "";
+            
             String selected = (string)cboField.SelectedItem;
             String fieldName = "";
             if (selected == "Forename")
@@ -54,14 +70,23 @@ namespace ManagemenDatabase
             dataBindingObj.LoadData(connectionString, mainQuery, dgvSearch);
         }
 
+
         private void btnRun_Click(object sender, EventArgs e)
         {
             if (Validation.ValidateControl(cboField, "Field") &&
                  Validation.ValidateControl(cboOperator, "Operator") &&
-                 Validation.ValidateControl(txtValue, "Value"))
+                 Validation.ValidateControl(txtValue, "Value") && Validation.ValidateControl(cboTables, "Table"))
             {
+                if ((string)cboTables.SelectedItem == "From DataBase")
+                {
 
                 buildQuery();
+                }
+                else if ((string)cboTables.SelectedItem == "From File")
+                {
+                    Helper.SearchFromFile(dgvDataSearch, dataFromFile, txtValue.Text);
+                }
+
             }
         }
 

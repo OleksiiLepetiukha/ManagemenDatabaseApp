@@ -47,6 +47,7 @@ namespace ManagemenDatabase
             {
                 MessageBox.Show("Error connecting to the database: " + ex.Message);
             }
+           // cnn.Close();
         }
         private void LoadData()
         {
@@ -131,7 +132,7 @@ namespace ManagemenDatabase
         {
             try
             {
-                
+               // cnn.Open();   
                 string deleteQuery = SQLQueries.DELETE;
                 MySqlCommand command = new MySqlCommand(deleteQuery, cnn);
                 command.Parameters.AddWithValue("@id", txtNumber.Text);
@@ -147,7 +148,7 @@ namespace ManagemenDatabase
                 {
                     MessageBox.Show("Row has not been deleted");
                 }
-                cnn.Close();
+               // cnn.Close();
             }
             catch (Exception ex)
             {
@@ -187,7 +188,7 @@ namespace ManagemenDatabase
                     MessageBox.Show("Error adding the new employee.");
                 }
 
-                cnn.Close();
+               // cnn.Close();
             }
             catch (Exception ex)
             {
@@ -199,7 +200,7 @@ namespace ManagemenDatabase
         {
             try
             {
-                
+               // cnn.Open();
                 string updateQuery = SQLQueries.UPDATE;
 
                 MySqlCommand command = new MySqlCommand(updateQuery, cnn);
@@ -223,7 +224,7 @@ namespace ManagemenDatabase
                 {
                     MessageBox.Show("Employee name is empty. Pleas type employee name");
                 }
-                cnn.Close();
+               // cnn.Close();
             }
             catch (Exception ex)
             {

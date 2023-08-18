@@ -38,6 +38,20 @@ namespace HelperMethods
 
         }
 
+        public static void SearchFromFile(DataGridView dataGridView, string[] data, string searchTerm)
+        {
+            dataGridView.Rows.Clear(); // Clear existing rows if any
+
+            foreach (string line in data)
+            {
+                if (line.Contains(searchTerm))
+                {
+                    string[] rowData = line.Split(';');
+                    dataGridView.Rows.Add(rowData);
+                }
+            }
+        }
+
     }
 
 
