@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
             this.gbSearch = new System.Windows.Forms.GroupBox();
@@ -42,6 +43,8 @@
             this.cboTables = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.ttSearchButtons = new System.Windows.Forms.ToolTip(this.components);
+            this.ttSearchBoxes = new System.Windows.Forms.ToolTip(this.components);
             this.gbSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSearch)).BeginInit();
@@ -54,6 +57,7 @@
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "&Close";
+            this.ttSearchButtons.SetToolTip(this.btnClose, "Click to close search form");
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -64,6 +68,7 @@
             this.btnRun.Size = new System.Drawing.Size(75, 23);
             this.btnRun.TabIndex = 9;
             this.btnRun.Text = "&Run";
+            this.ttSearchButtons.SetToolTip(this.btnRun, "Click to start a search queary");
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
@@ -121,6 +126,8 @@
             this.cboField.Name = "cboField";
             this.cboField.Size = new System.Drawing.Size(121, 21);
             this.cboField.TabIndex = 0;
+            this.ttSearchBoxes.SetToolTip(this.cboField, "Select fielad for search");
+            this.cboField.SelectedIndexChanged += new System.EventHandler(this.cboField_SelectedIndexChanged);
             // 
             // cboOperator
             // 
@@ -136,6 +143,7 @@
             this.cboOperator.Name = "cboOperator";
             this.cboOperator.Size = new System.Drawing.Size(100, 21);
             this.cboOperator.TabIndex = 1;
+            this.ttSearchBoxes.SetToolTip(this.cboOperator, "Select search operator");
             // 
             // txtValue
             // 
@@ -143,6 +151,7 @@
             this.txtValue.Name = "txtValue";
             this.txtValue.Size = new System.Drawing.Size(100, 20);
             this.txtValue.TabIndex = 2;
+            this.ttSearchBoxes.SetToolTip(this.txtValue, "Type search value");
             // 
             // dgvSearch
             // 
@@ -171,6 +180,7 @@
             this.cboTables.Name = "cboTables";
             this.cboTables.Size = new System.Drawing.Size(100, 21);
             this.cboTables.TabIndex = 12;
+            this.ttSearchBoxes.SetToolTip(this.cboTables, "Select a table for search");
             // 
             // label1
             // 
@@ -189,6 +199,10 @@
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 13;
             this.label2.Text = "From File";
+            // 
+            // ttSearchBoxes
+            // 
+            this.ttSearchBoxes.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // frmSearch
             // 
@@ -232,5 +246,7 @@
         private System.Windows.Forms.ComboBox cboTables;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip ttSearchBoxes;
+        private System.Windows.Forms.ToolTip ttSearchButtons;
     }
 }

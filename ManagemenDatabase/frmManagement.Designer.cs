@@ -45,18 +45,20 @@
             this.txtDepartment = new System.Windows.Forms.TextBox();
             this.txtNumber = new System.Windows.Forms.TextBox();
             this.bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.btnOpen = new System.Windows.Forms.Button();
+            this.ttButtons = new System.Windows.Forms.ToolTip(this.components);
+            this.ttBoxes = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
             this.bindingNavigator.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +70,7 @@
             this.btnExit.Size = new System.Drawing.Size(94, 23);
             this.btnExit.TabIndex = 27;
             this.btnExit.Text = "&Exit";
+            this.ttButtons.SetToolTip(this.btnExit, "Clik to close App");
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -78,6 +81,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(94, 23);
             this.btnUpdate.TabIndex = 26;
             this.btnUpdate.Text = "&Update Record";
+            this.ttButtons.SetToolTip(this.btnUpdate, "Click to update record");
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -88,6 +92,7 @@
             this.btnSearch.Size = new System.Drawing.Size(94, 23);
             this.btnSearch.TabIndex = 25;
             this.btnSearch.Text = "&Search Records";
+            this.ttButtons.SetToolTip(this.btnSearch, "Click to open search form");
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -98,6 +103,7 @@
             this.btnDelete.Size = new System.Drawing.Size(94, 23);
             this.btnDelete.TabIndex = 24;
             this.btnDelete.Text = "&Delete Record";
+            this.ttButtons.SetToolTip(this.btnDelete, "Click to delete record");
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -108,6 +114,7 @@
             this.btnAdd.Size = new System.Drawing.Size(94, 23);
             this.btnAdd.TabIndex = 23;
             this.btnAdd.Text = "&Add Record";
+            this.ttButtons.SetToolTip(this.btnAdd, "Click to add record");
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -165,6 +172,7 @@
             this.txtForename.Name = "txtForename";
             this.txtForename.Size = new System.Drawing.Size(126, 20);
             this.txtForename.TabIndex = 17;
+            this.ttBoxes.SetToolTip(this.txtForename, "Type Manager Forename");
             // 
             // txtSurname
             // 
@@ -172,6 +180,7 @@
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(126, 20);
             this.txtSurname.TabIndex = 16;
+            this.ttBoxes.SetToolTip(this.txtSurname, "Type Manager Surname\r\n");
             // 
             // txtDepartment
             // 
@@ -179,6 +188,7 @@
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.Size = new System.Drawing.Size(126, 20);
             this.txtDepartment.TabIndex = 15;
+            this.ttBoxes.SetToolTip(this.txtDepartment, "Type the Department Number");
             // 
             // txtNumber
             // 
@@ -187,6 +197,7 @@
             this.txtNumber.ReadOnly = true;
             this.txtNumber.Size = new System.Drawing.Size(126, 20);
             this.txtNumber.TabIndex = 14;
+            this.ttBoxes.SetToolTip(this.txtNumber, "Selected Manager Number");
             // 
             // bindingNavigator
             // 
@@ -216,6 +227,31 @@
             this.bindingNavigator.Size = new System.Drawing.Size(784, 25);
             this.bindingNavigator.TabIndex = 28;
             this.bindingNavigator.Text = "bindingNavigator";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -252,16 +288,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -286,26 +315,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // btnOpen
             // 
@@ -314,8 +325,13 @@
             this.btnOpen.Size = new System.Drawing.Size(94, 23);
             this.btnOpen.TabIndex = 29;
             this.btnOpen.Text = "&Open File";
+            this.ttButtons.SetToolTip(this.btnOpen, "Click to open external file");
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ttBoxes
+            // 
+            this.ttBoxes.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // frmManagement
             // 
@@ -379,5 +395,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.ToolTip ttButtons;
+        private System.Windows.Forms.ToolTip ttBoxes;
     }
 }

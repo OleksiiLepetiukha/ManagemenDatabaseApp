@@ -33,13 +33,23 @@ namespace ManagemenDatabase
            
 
             dgvData.ColumnCount = 4;
-            dgvData.Columns[0].Name = "Id";
-            dgvData.Columns[1].Name = "Forename";
-            dgvData.Columns[2].Name = "Surname";
-            dgvData.Columns[3].Name = "Dept. Number";
+            dgvData.Columns[0].Name = "Manager_Number";
+            dgvData.Columns[1].Name = "Manager_Forename";
+            dgvData.Columns[2].Name = "Manager_Surname";
+            dgvData.Columns[3].Name = "Dept_Number";
 
             Helper.insertDataToDGV(dataFromFile, dgvData);
             
+        }
+
+        private void btnSearcFile_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            using (frmSearch searchForm = new frmSearch())
+            {
+                searchForm.ShowDialog();
+                this.Show();
+            }
         }
     }
 }

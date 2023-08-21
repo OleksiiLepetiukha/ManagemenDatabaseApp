@@ -52,6 +52,46 @@ namespace HelperMethods
             }
         }
 
+        public static List<string> SearchFromFileByDeptNumber(string[] data, string searchTerm, string selectedOperator)
+        {
+            List<string> searchResults = new List<string>();
+
+            foreach (string line in data)
+            {
+                string[] rowData = line.Split(';');
+
+                if (rowData.Length >= 4)
+                {
+                    string deptNumber = rowData[3].Trim(); // Assuming department number is in the fourth column
+                    int deptNum;
+                    // Проверяем оператор и выполняем сравнение в зависимости от выбора
+                    if (selectedOperator == "=" && deptNumber == searchTerm)
+                    {
+                        searchResults.Add(line);
+                    }
+                    else if (selectedOperator == "<" && int.TryParse(deptNumber, out  deptNum) && deptNum < int.Parse(searchTerm))
+                    {
+                        searchResults.Add(line);
+                    }
+                    else if (selectedOperator == ">" && int.TryParse(deptNumber, out  deptNum) && deptNum > int.Parse(searchTerm))
+                    {
+                        searchResults.Add(line);
+                    }
+                    else if (selectedOperator == "<=" && int.TryParse(deptNumber, out  deptNum) && deptNum <= int.Parse(searchTerm))
+                    {
+                        searchResults.Add(line);
+                    }
+                    else if (selectedOperator == ">=" && int.TryParse(deptNumber, out deptNum) && deptNum >= int.Parse(searchTerm))
+                    {
+                        searchResults.Add(line);
+                    }
+                }
+            }
+
+            return searchResults;
+        }
+
+
     }
 
 

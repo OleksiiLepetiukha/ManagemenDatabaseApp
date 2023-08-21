@@ -22,6 +22,8 @@ namespace ManagemenDatabase
         String[] dataFromFile = null;
         String derictory = @"D:\Front\SoftwearDevelopment\3. Programing C#/";
 
+        
+
         public frmSearch()
         {
             InitializeComponent();
@@ -35,12 +37,12 @@ namespace ManagemenDatabase
             String fileName = @"managment.txt";
             String records = derictory + fileName;
             dataFromFile = Helper.readFileFromArr(records);
-
+           
             dgvDataSearch.ColumnCount = 4;
-            dgvDataSearch.Columns[0].Name = "Id";
-            dgvDataSearch.Columns[1].Name = "Forename";
-            dgvDataSearch.Columns[2].Name = "Surname";
-            dgvDataSearch.Columns[3].Name = "Dept. Number";
+            dgvDataSearch.Columns[0].Name = "Manager_Nymber";
+            dgvDataSearch.Columns[1].Name = "Manager_Forename";
+            dgvDataSearch.Columns[2].Name = "Manager_Surname";
+            dgvDataSearch.Columns[3].Name = "Dept_Number";
 
             Helper.insertDataToDGV(dataFromFile, dgvDataSearch);
         }
@@ -73,6 +75,7 @@ namespace ManagemenDatabase
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+           
             if (Validation.ValidateControl(cboField, "Field") &&
                  Validation.ValidateControl(cboOperator, "Operator") &&
                  Validation.ValidateControl(txtValue, "Value") && Validation.ValidateControl(cboTables, "Table"))
@@ -84,7 +87,26 @@ namespace ManagemenDatabase
                 }
                 else if ((string)cboTables.SelectedItem == "From File")
                 {
+                    if((string)cboField.SelectedItem == "Dept. Number")
+                    {
+                        
+                        List<string> searchResults = Helper.SearchFromFileByDeptNumber(dataFromFile, txtValue.Text, (string)cboOperator.SelectedItem);
+
+                        // Отобразите результаты поиска в DataGridView (dgvSearch)
+                        dgvDataSearch.Rows.Clear();
+                        foreach (string result in searchResults)
+                        {
+                            string[] resultParts = result.Split(';');
+                            if (resultParts.Length >= 4)
+                            {
+                                dgvDataSearch.Rows.Add(resultParts);
+                            }
+                        }
+                    }
+                    else
+                    {
                     Helper.SearchFromFile(dgvDataSearch, dataFromFile, txtValue.Text);
+                    }
                 }
 
             }
@@ -93,6 +115,26 @@ namespace ManagemenDatabase
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cboField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedField = cboField.SelectedItem as string;
+
+            if (selectedField == "Forename" || selectedField == "Surname")
+            {
+                
+                cboOperator.Enabled = false;
+
+              
+                cboOperator.SelectedItem = "=";
+            }
+            else
+            {
+               
+                cboOperator.Enabled = true;
+                cboOperator.SelectedItem = null;
+            }
         }
     }
 }
