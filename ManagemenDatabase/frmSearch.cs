@@ -91,17 +91,8 @@ namespace ManagemenDatabase
                     {
                         
                         List<string> searchResults = Helper.SearchFromFileByDeptNumber(dataFromFile, txtValue.Text, (string)cboOperator.SelectedItem);
-
-                        // Отобразите результаты поиска в DataGridView (dgvSearch)
-                        dgvDataSearch.Rows.Clear();
-                        foreach (string result in searchResults)
-                        {
-                            string[] resultParts = result.Split(';');
-                            if (resultParts.Length >= 4)
-                            {
-                                dgvDataSearch.Rows.Add(resultParts);
-                            }
-                        }
+                        String[] searchResult = searchResults.ToArray();
+                        Helper.insertDataToDGV(searchResult, dgvDataSearch);
                     }
                     else
                     {

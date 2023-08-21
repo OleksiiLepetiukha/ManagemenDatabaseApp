@@ -62,9 +62,9 @@ namespace HelperMethods
 
                 if (rowData.Length >= 4)
                 {
-                    string deptNumber = rowData[3].Trim(); // Assuming department number is in the fourth column
+                    string deptNumber = rowData[3].Trim();
                     int deptNum;
-                    // Проверяем оператор и выполняем сравнение в зависимости от выбора
+                    
                     if (selectedOperator == "=" && deptNumber == searchTerm)
                     {
                         searchResults.Add(line);
